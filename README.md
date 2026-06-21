@@ -1,6 +1,7 @@
 # 🚀 Personal Portfolio — React + Tailwind CSS
 
 A modern, high-converting personal portfolio with a dark glassmorphism aesthetic.
+🌐Demo Link : https://portfolio-ojbc.vercel.app/
 
 ## ✨ Features
 
@@ -12,7 +13,7 @@ A modern, high-converting personal portfolio with a dark glassmorphism aesthetic
 - 📬 Contact form with animated send state
 - 🔗 Footer with LinkedIn, GitHub, Upwork links
 - 📱 Fully mobile-responsive
-- ⚡ GitHub Pages deployment via GitHub Actions
+- ⚡Seamless cloud deployment and hosting via Vercel
 
 ## 🗂️ Project Structure
 
@@ -32,6 +33,7 @@ portfolio/
 │   ├── App.js               # Root component
 │   ├── index.js             # React entry point
 │   └── index.css            # Tailwind + custom CSS
+├── vercel.json              # Vercel single-page application routing configuration
 ├── tailwind.config.js
 ├── postcss.config.js
 └── package.json
@@ -50,18 +52,18 @@ npm start
 npm run build
 ```
 
-## 🌐 Deploy to GitHub Pages
+## 🌐 Deploy to Vercel (Automatic Integration)
 
-### Method 1: GitHub Actions (recommended — automatic)
-1. Push this repo to GitHub
-2. Go to **Settings → Pages → Source** → select `gh-pages` branch
-3. Every push to `main` auto-deploys via `.github/workflows/deploy.yml`
-
-### Method 2: Manual deploy
+1. Push your code changes directly to your GitHub repository:
 ```bash
-npm install -D gh-pages
-npm run deploy
+git add .
+git commit -m "Update portfolio config"
+git push origin main
 ```
+2. Connect your GitHub account to Vercel.
+3. Import this repository and click Deploy. Vercel will track the main branch and auto-build every time you push code.
+
+
 
 ## 🎨 Customization Checklist
 
@@ -73,11 +75,10 @@ npm run deploy
 | `Projects.jsx` | Project names, descriptions, tags, links |
 | `Contact.jsx` | Email, social links — wire up Formspree or EmailJS |
 | `Footer.jsx` | Social links |
-| `package.json` | `"homepage"` field → your GitHub Pages URL |
 
 ## 📬 Wiring Up the Contact Form
 
-Replace the `handleSubmit` in `Contact.jsx` with:
+Replace the handleSubmit process in Contact.jsx with one of the following integration implementations:
 
 **Option A — Formspree (free, no backend):**
 ```js
@@ -99,7 +100,7 @@ await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', form, 'PUBLIC_KEY');
 
 ## 🛠 Tech Stack
 
-- React 18
-- Tailwind CSS 3
-- Lucide React (icons)
-- GitHub Actions (CI/CD)
+- Frontend: React 18
+- Styling: Tailwind CSS 3
+- Icons: Lucide React
+- Hosting & Infrastructure: Vercel Cloud Platform
