@@ -14,7 +14,7 @@ const achievementsData = [
     description:
       'Submitted an executive summary proposing scalable tech architectures for real-world enterprise operations.',
     tags: ['Techathon', 'System Design', 'Enterprise Tech'],
-    link: '#',
+    link: 'https://drive.google.com/file/d/1Pi70mSQVRO0XtJBmjn_2Z6WvLQ82GuwQ/view?usp=sharing',
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const achievementsData = [
     description:
       'Participated in the online assessment evaluating national development strategies, policy frameworks, and data-driven impact.',
     tags: ['Case Study', 'Strategic Analysis', 'Problem Solving'],
-    link: '#',
+    link: 'https://drive.google.com/file/d/1Hi22tRKaIAQoj3WiiRlvYJa-vk15--zA/view?usp=sharing',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const achievementsData = [
     description:
       'Competed in India’s premier campus business and tech quiz, testing industry intelligence and analytical speed.',
     tags: ['Business Tech', 'Analytical Speed', 'SVNIT'],
-    link: '#',
+    link: 'https://drive.google.com/file/d/15FHxpak5HN_deZqSbLSCD4fRPckUJOYU/view?usp=sharing',
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const achievementsData = [
     description:
       'Participated in the student track, presenting innovative concepts to tackle complex operational and technological challenges.',
     tags: ['Innovation', 'Critical Thinking', 'Student Track'],
-    link: '#',
+    link: 'https://drive.google.com/file/d/1EehB03M0E6q9Pjr3zX-zr4UeNACK0YBo/view?usp=drive_link',
   },
 
   // Verified Certifications
@@ -60,7 +60,7 @@ const achievementsData = [
     description:
       'Completed verified curriculum spanning SQL querying, data cleaning, statistical modeling, and dashboard reporting.',
     tags: ['SQL', 'Data Analytics', 'Statistical Modeling'],
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1_KUlliDANBCG1IeV4PEZE74-j2vBNMGx?usp=sharing',
   },
   {
     id: 6,
@@ -71,7 +71,7 @@ const achievementsData = [
     description:
       'Awarded national certification for community service initiatives, civic engagement drives, and volunteer leadership at SVNIT.',
     tags: ['Leadership', 'Civic Engagement', 'Community Service'],
-    link: '#',
+    link: 'https://drive.google.com/file/d/1pi0F5lLWmlEJMOYTpwWU8yT8gtzb6T91/view?usp=sharing',
   },
 ];
 
