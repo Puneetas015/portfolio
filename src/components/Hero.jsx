@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowDown, Download, Github, Linkedin } from 'lucide-react';
-
+import { motion } from 'framer-motion';
+import { ArrowDown, Download, Github, Linkedin, Sparkles } from 'lucide-react';
+import { SiLeetcode } from 'react-icons/si';
+const LeetCodeIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862c.284.03.568.03.852.016a5.962 5.962 0 0 0 2.988-1.07l7.65-6.697a1.379 1.379 0 0 0 .19-1.928 1.38 1.38 0 0 0-1.928-.19l-7.65 6.697a3.21 3.21 0 0 1-1.61.576 3.193 3.193 0 0 1-2.597-2.083 2.978 2.978 0 0 1-.188-1.272 2.872 2.872 0 0 1 .65-1.139l3.854-4.126 5.406-5.788a1.38 1.38 0 0 0-.19-1.928A1.374 1.374 0 0 0 13.483 0zm-2.88 7.218a1.38 1.38 0 0 0-1.928.19l-4.22 4.516a1.38 1.38 0 1 0 2.016 1.884l4.22-4.516a1.38 1.38 0 0 0-.088-2.074zM16.5 16.5h-9a1.5 1.5 0 0 0 0 3h9a1.5 1.5 0 0 0 0-3z" />
+  </svg>
+);
 const roles = [
+  'SVNIT Student · ECE 2026',
   'Data Engineer',
   'Full Stack Developer',
-  'SVNIT Student · ECE 2026',
   'ML & Vision AI Builder',
   'IoT Systems Designer',
 ];
 
-function useTypewriter(words, speed = 80, pause = 1800) {
+function useTypewriter(words, speed = 75, pause = 1600) {
   const [displayed, setDisplayed] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -41,124 +47,144 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,245,255,0.05) 0%, transparent 70%), #0b0e14' }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090a0f] px-6 pt-20"
     >
-      {/* Grid background */}
+      {/* Ambient background glow */}
       <div
-        className="absolute inset-0 opacity-40"
+        className="pointer-events-none absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full opacity-15"
         style={{
-          backgroundImage:
-            'linear-gradient(rgba(0,245,255,0.04) 1px, transparent 1px), linear-gradient(90deg,rgba(0,245,255,0.04) 1px,transparent 1px)',
-          backgroundSize: '60px 60px',
+          background: 'radial-gradient(circle, #f97316 0%, rgba(255,87,34,0.1) 40%, transparent 70%)',
+          filter: 'blur(100px)',
         }}
       />
 
-      {/* Floating orbs */}
+      {/* Grid texture */}
       <div
-        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-10 animate-float"
-        style={{ background: 'radial-gradient(circle, #00f5ff, transparent 70%)', filter: 'blur(40px)' }}
-      />
-      <div
-        className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full opacity-8 animate-float"
-        style={{ background: 'radial-gradient(circle, #a855f7, transparent 70%)', filter: 'blur(60px)', animationDelay: '3s' }}
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
+          backgroundSize: '50px 50px',
+        }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00f5ff]/20 bg-[#00f5ff]/5 text-[#00f5ff] text-sm font-display mb-8 animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-[#00f5ff] animate-pulse-slow" />
-          Open to opportunities · Graduating 2026
-        </div>
-
-        {/* Name */}
-        <h1
-          className="font-display text-5xl sm:text-7xl font-bold leading-tight mb-4 animate-slide-up"
-          style={{ animationDelay: '0.1s' }}
+      <div className="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
+        {/* Status Pill */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#f97316]/30 bg-[#f97316]/10 text-[#f97316] text-xs font-semibold uppercase tracking-wider mb-8 backdrop-blur-md"
         >
-          <span className="text-white">Hi, I'm </span>
-          <span
-            className="text-transparent bg-clip-text"
-            style={{ backgroundImage: 'linear-gradient(135deg, #00f5ff 0%, #a855f7 100%)' }}
-          >
+          <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse" />
+          Open to Opportunities · Graduating 2026
+        </motion.div>
+
+        {/* Main Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-5xl sm:text-7xl font-black tracking-tight leading-tight text-white mb-4"
+        >
+          Hi, I'm{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#f97316]">
             Puneet Tiwari
           </span>
-        </h1>
+        </motion.h1>
 
-        {/* Typewriter */}
-        <div
-          className="font-display text-2xl sm:text-3xl text-slate-400 mb-6 h-10 animate-slide-up"
-          style={{ animationDelay: '0.2s' }}
+        {/* Typewriter Display */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-xl sm:text-3xl font-mono font-medium text-slate-300 mb-6 h-9 flex items-center justify-center gap-1"
         >
-          <span className="text-[#00f5ff] text-glow-cyan">{typed}</span>
-          <span className="typewriter-cursor" />
-        </div>
+          <span className="text-[#f97316]">{typed}</span>
+          <span className="inline-block w-0.5 h-6 sm:h-8 bg-[#f97316] animate-pulse" />
+        </motion.div>
 
-        {/* Sub */}
-        <p
-          className="font-body text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed animate-slide-up"
-          style={{ animationDelay: '0.3s' }}
+        {/* Subtitle Bio */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
         >
           Electronics & Communication Engineering student at{' '}
-          <span className="text-white font-medium">SVNIT Surat</span>, graduating in 2026.
-          Building intelligent systems at the intersection of data pipelines, vision AI, and full-stack engineering.
-        </p>
+          <span className="text-white font-medium">SVNIT Surat</span>. Building intelligent
+          systems at the intersection of data pipelines, vision AI, and full-stack engineering.
+        </motion.p>
 
-        {/* CTA buttons */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up"
-          style={{ animationDelay: '0.4s' }}
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
         >
           <button
-            onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-            className="group flex items-center gap-2 px-8 py-3 rounded-xl font-display font-bold text-sm text-[#0b0e14] transition-all duration-300 hover:scale-105"
-            style={{
-              background: 'linear-gradient(135deg, #00f5ff, #3b82f6)',
-              boxShadow: '0 0 30px rgba(0,245,255,0.3)',
-            }}
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-slate-950 bg-gradient-to-r from-[#f97316] to-[#ea580c] shadow-[0_0_30px_rgba(249,115,22,0.35)] hover:scale-105 active:scale-95 transition-all"
           >
-            View Projects
-            <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
+            Explore Systems
+            <ArrowDown size={15} />
           </button>
+
           <a
-            href="/resume.pdf"
-            download
-            className="flex items-center gap-2 px-8 py-3 rounded-xl font-display font-bold text-sm text-[#00f5ff] border border-[#00f5ff]/30 hover:bg-[#00f5ff]/10 hover:border-[#00f5ff] transition-all duration-300"
+            href="https://drive.google.com/file/d/1gQMh8tEVNcbxY_fGGCXSyV2fqgEhc4OO/view?usp=sharinghttps://drive.google.com/file/d/1gQMh8tEVNcbxY_fGGCXSyV2fqgEhc4OO/view?usp=sharing"
+            download="Puneet_Tiwari_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-[#f97316]/50 transition-all"
           >
-            <Download size={16} />
+            <Download size={15} />
             Download CV
           </a>
-        </div>
+        </motion.div>
 
-        {/* Social links */}
-        <div
-          className="flex items-center justify-center gap-6 mt-12 animate-fade-in"
-          style={{ animationDelay: '0.6s' }}
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex items-center justify-center gap-6 mt-12"
         >
           {[
             { icon: Github, href: 'https://github.com/Puneetas015', label: 'GitHub' },
             { icon: Linkedin, href: 'https://www.linkedin.com/in/puneet-tiwari015/', label: 'LinkedIn' },
+            {
+    icon: LeetCodeIcon, // ya SiLeetcode
+    href: 'https://leetcode.com/u/Puneet015/',
+    label: 'LeetCode',
+    color: '#FFA116', // Official LeetCode amber color
+  },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-slate-500 hover:text-[#00f5ff] transition-colors duration-300 group"
+              className="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-[#f97316] transition-colors group"
             >
-              <Icon size={18} className="group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-body">{label}</span>
+              <Icon size={16} className="group-hover:scale-110 transition-transform" />
+              <span>{label}</span>
             </a>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
-        <span className="text-xs text-slate-600 font-display tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#00f5ff]/50 to-transparent" />
-      </div>
+      {/* Scroll Down Indicator */}
+      <motion.button
+        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-[#f97316] transition-colors"
+      >
+        <span className="text-[10px] font-mono tracking-widest uppercase">Scroll</span>
+        <div className="w-[1px] h-10 bg-gradient-to-b from-[#f97316] to-transparent animate-pulse" />
+      </motion.button>
     </section>
   );
 }

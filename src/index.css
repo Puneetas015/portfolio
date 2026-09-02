@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@media (pointer: fine) {
+  body, a, button, input, textarea, [role="button"], .cursor-pointer {
+    cursor: none !important;
+  }
+}
 :root {
   --bg-primary: #0b0e14;
   --bg-secondary: #0f1420;

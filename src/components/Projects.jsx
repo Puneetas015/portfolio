@@ -1,222 +1,162 @@
-import React, { useState } from 'react';
-import { Github, ExternalLink, Sparkles, Leaf, Zap, Droplets } from 'lucide-react';
+import React from 'react';
+import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+
+import novafixImg from '../assets/projects/novafix.png';
+import agribotImg from '../assets/projects/agribot.png';
+import fluxLinkImg from '../assets/projects/flux_link.png';
+import smartGardenImg from '../assets/projects/smart_garden.png';
+import { ScrollHeading } from './ui/ScrollReveal';
 
 const projects = [
   {
     id: 1,
     name: 'NovaFix AI',
-    subtitle: 'Neural Portrait Studio',
+    category: 'AI Neural Portrait Studio',
+    duration: '2024 - 2025',
     description:
-      'AI-powered image restoration pipeline combining GFPGAN for facial feature reconstruction and Real-ESRGAN for high-fidelity super-resolution. Restores degraded portraits with photorealistic detail at up to 4× upscale.',
-    icon: Sparkles,
-    accent: '#00f5ff',
-    tags: ['GFPGAN', 'Real-ESRGAN', 'PyTorch', 'FastAPI', 'React'],
-    github: 'https://github.com/Puneetas015',
-    demo: '#',
-    status: 'Live',
-    year: '2024',
+      'Architected an AI restoration pipeline leveraging GFPGAN and Real-ESRGAN for facial reconstruction with up to 4× photorealistic upscaling.',
+    image: novafixImg,
+    tags: ['PyTorch', 'FastAPI', 'React', 'GFPGAN', 'Real-ESRGAN'],
+    github: 'https://github.com/Puneetas015/NovaFix_AI',
+    demo: 'https://github.com/Puneetas015/NovaFix_AI/blob/main/assets/demo.mp4',
   },
   {
     id: 2,
-    name: 'PlantCare / AgriBot',
-    subtitle: 'Vision AI Diagnostic Service',
+    name: 'AgriBot',
+    category: 'Vision AI Diagnostics',
+    duration: '2024 - 2025',
     description:
-      'Plant disease detection system powered by Vision Transformers (ViT). Classifies 38+ crop disease categories from leaf images with high accuracy, deployed as a mobile-friendly Progressive Web App for field-ready diagnostics.',
-    icon: Leaf,
-    accent: '#22c55e',
-    tags: ['ViT', 'TensorFlow', 'OpenCV', 'PWA', 'Python'],
-    github: 'https://github.com/Puneetas015',
-    demo: '#',
-    status: 'Completed',
-    year: '2024',
+      'Field-ready crop disease classifier powered by Vision Transformers (ViT) diagnosing 38+ plant diseases via mobile-optimized PWA.',
+    image: agribotImg,
+    tags: ['Vision Transformers', 'TensorFlow', 'OpenCV', 'PWA', 'Python'],
+    github: 'https://github.com/Puneetas015/Plant-Disease-Detection-',
+    demo: 'https://drive.google.com/file/d/1w9iy5JrFVAqwINf_ciUZvIRWSBfSwJV7/view?usp=sharing',
   },
   {
     id: 3,
     name: 'FluxLink_Core',
-    subtitle: 'Identity Resolution Engine',
+    category: 'Identity Resolution Engine',
+    duration: '2025 - 2026',
     description:
-      'A high-performance identity resolution engine built with Node.js and TypeScript. Deduplicates and reconciles fragmented entity records across distributed data sources using probabilistic matching and graph-based clustering.',
-    icon: Zap,
-    accent: '#a855f7',
-    tags: ['Node.js', 'TypeScript', 'Graph DB', 'REST API', 'PostgreSQL'],
-    github: 'https://github.com/Puneetas015',
-    demo: '#',
-    status: 'In Progress',
-    year: '2025',
+      'High-performance entity reconciliation engine built with Node.js & TypeScript utilizing probabilistic matching and graph clustering.',
+    image: fluxLinkImg,
+    tags: ['TypeScript', 'Node.js', 'Graph DB', 'PostgreSQL', 'REST API'],
+    github: 'https://github.com/Puneetas015/FluxLink_Core',
   },
   {
     id: 4,
     name: 'Smart Garden',
-    subtitle: 'Autonomous IoT Irrigation System',
+    category: 'Autonomous IoT Irrigation',
+    duration: '2024 - 2025',
     description:
-      'ESP32-powered autonomous irrigation controller with real-time soil moisture sensing, weather API integration, and remote dashboard. Schedules and adjusts watering cycles intelligently to conserve water while maximising plant health.',
-    icon: Droplets,
-    accent: '#38bdf8',
+      'ESP32 embedded autonomous irrigation controller with real-time moisture telemetry, weather sync, and dynamic fail-safe watchdogs.',
+    image: smartGardenImg,
     tags: ['ESP32', 'MQTT', 'Arduino', 'Node.js', 'IoT'],
-    github: 'https://github.com/Puneetas015',
-    demo: '#',
-    status: 'Completed',
-    year: '2024',
+    github: 'https://github.com/Puneetas015/IOT_Smart_Garden',
+    demo: 'https://github.com/Puneetas015/IOT_Smart_Garden/blob/main/Hardware/Demo%20Video.mp4',
   },
 ];
 
-const statusColors = {
-  Live: { bg: 'rgba(34,197,94,0.1)', text: '#22c55e', border: 'rgba(34,197,94,0.3)' },
-  Completed: { bg: 'rgba(0,245,255,0.1)', text: '#00f5ff', border: 'rgba(0,245,255,0.3)' },
-  'In Progress': { bg: 'rgba(168,85,247,0.1)', text: '#a855f7', border: 'rgba(168,85,247,0.3)' },
-};
-
-function ProjectCard({ project }) {
-  const [hovered, setHovered] = useState(false);
-  const Icon = project.icon;
-  const sc = statusColors[project.status];
-
-  return (
-    <div
-      className="project-card glass-card rounded-2xl p-6 flex flex-col group"
-      style={{
-        border: `1px solid ${hovered ? project.accent + '30' : 'rgba(0,245,255,0.06)'}`,
-        boxShadow: hovered ? `0 20px 60px ${project.accent}15` : 'none',
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div
-          className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300"
-          style={{
-            background: hovered ? `${project.accent}20` : `${project.accent}10`,
-            border: `1px solid ${project.accent}30`,
-          }}
-        >
-          <Icon size={20} style={{ color: project.accent }} />
-        </div>
-        <div className="flex items-center gap-2">
-          <span
-            className="text-xs font-display font-bold px-2.5 py-1 rounded-full"
-            style={{ background: sc.bg, color: sc.text, border: `1px solid ${sc.border}` }}
-          >
-            {project.status}
-          </span>
-          <span className="text-xs text-slate-600 font-display">{project.year}</span>
-        </div>
-      </div>
-
-      {/* Title */}
-      <div className="mb-3">
-        <h3
-          className="font-display text-xl font-bold mb-0.5 transition-colors duration-300"
-          style={{ color: hovered ? project.accent : 'white' }}
-        >
-          {project.name}
-        </h3>
-        <p className="font-body text-xs text-slate-500 tracking-wide">{project.subtitle}</p>
-      </div>
-
-      {/* Divider */}
-      <div
-        className="h-px mb-4 transition-all duration-500"
-        style={{ background: `linear-gradient(90deg, ${project.accent}40, transparent)`, opacity: hovered ? 1 : 0.3 }}
-      />
-
-      {/* Description */}
-      <p className="font-body text-sm text-slate-400 leading-relaxed mb-5 flex-1">{project.description}</p>
-
-      {/* Tech badges */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {project.tags.map((tag) => (
-          <span
-            key={tag}
-            className="font-display text-xs px-2.5 py-1 rounded-md"
-            style={{
-              background: `${project.accent}0d`,
-              color: project.accent,
-              border: `1px solid ${project.accent}20`,
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Buttons */}
-      <div className="flex gap-3">
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-display text-xs font-bold transition-all duration-300 text-slate-300 hover:text-white"
-          style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
-        >
-          <Github size={14} />
-          GitHub
-        </a>
-        <a
-          href={project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl font-display text-xs font-bold transition-all duration-300"
-          style={{
-            background: `${project.accent}15`,
-            border: `1px solid ${project.accent}30`,
-            color: project.accent,
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = `${project.accent}25`; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = `${project.accent}15`; }}
-        >
-          <ExternalLink size={14} />
-          Live Demo
-        </a>
-      </div>
-    </div>
-  );
-}
-
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-28 px-6" style={{ background: '#0f1420' }}>
-      {/* Cyan glow top-left */}
-      <div
-        className="absolute top-0 left-0 w-80 h-80 rounded-full opacity-5 pointer-events-none"
-        style={{ background: 'radial-gradient(circle,#00f5ff,transparent 70%)', filter: 'blur(80px)' }}
-      />
+    <section id="projects" className="relative py-28 px-6 bg-[#090a0f]">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Animated Section Header */}
+        <ScrollHeading
+          kicker="My recent works"
+          title="FEATURED PROJECTS"
+          subtitle="Production architectures, deep learning models, and embedded IoT systems"
+          align="left"
+        />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section label */}
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-[#00f5ff] font-display text-sm tracking-widest uppercase">//</span>
-          <span className="text-[#00f5ff] font-display text-sm tracking-widest uppercase">Projects</span>
-          <div className="flex-1 h-px bg-gradient-to-r from-[#00f5ff]/30 to-transparent" />
-        </div>
-
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight">
-            Things I've{' '}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{ backgroundImage: 'linear-gradient(135deg,#00f5ff,#a855f7)' }}
-            >
-              built
-            </span>
-          </h2>
-          <a
-            href="https://github.com/Puneetas015"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm font-display text-slate-500 hover:text-[#00f5ff] transition-colors shrink-0"
-          >
-            <Github size={16} />
-            View all on GitHub
-          </a>
-        </div>
-
-        {/* 2-col on md, then auto-fill on lg for 4 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* 3-Column Responsive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <div
+              key={project.id}
+              className="glass-panel rounded-3xl overflow-hidden flex flex-col group transition-all duration-300"
+            >
+              {/* Browser Preview Window Banner */}
+              <div className="relative h-60 w-full overflow-hidden bg-[#0b0e14] p-3">
+                <div className="relative h-full w-full rounded-2xl overflow-hidden border border-white/10">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Dark gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 rounded-full bg-white text-slate-900 flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                        title="View GitHub Repository"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 rounded-full bg-[#f97316] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                        title="View Live Demo"
+                      >
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex flex-col flex-1">
+                <div className="flex items-center justify-between text-xs text-slate-500 font-mono mb-2">
+                  <span>{project.duration}</span>
+                </div>
+
+                <h3 className="text-2xl font-extrabold text-white mb-1 group-hover:text-[#f97316] transition-colors">
+                  {project.name}
+                </h3>
+                <p className="text-xs text-slate-400 mb-4">{project.category}</p>
+
+                <p className="text-xs text-slate-300 leading-relaxed mb-6 flex-1 line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* Read Case Study Link */}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#f97316] hover:text-[#fb923c] mb-6 transition-colors"
+                >
+                  <span>Explore System</span>
+                  <ArrowRight size={14} />
+                </a>
+
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/5 text-slate-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {project.tags.length > 3 && (
+                    <span className="text-[11px] px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/5 text-slate-500">
+                      +{project.tags.length - 3} more
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

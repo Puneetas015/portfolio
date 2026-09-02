@@ -1,25 +1,32 @@
 import React from 'react';
-import './index.css';
+import CustomCursor from './components/ui/CustomCursor';
+import InitialLoader from './components/ui/InitialLoader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Achievements from './components/Achievements';
+import GitaQuotes from './components/GitaQuotes'; // <-- Imported
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-export default function App() {
+function App() {
   return (
-    <div className="relative min-h-screen" style={{ background: '#0b0e14' }}>
+    <div className="bg-[#090A0F] min-h-screen text-slate-100 selection:bg-red-500/20 selection:text-red-400">
+      <CustomCursor />
+      <InitialLoader />
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
+      <Hero />
+      <About />
+      <Projects />
+      <Skills />
+      <Achievements />
+      <GitaQuotes />
+      <Contact />
       <Footer />
     </div>
   );
 }
+
+export default App;
