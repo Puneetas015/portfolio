@@ -198,22 +198,24 @@ export default function Achievements() {
                       ))}
                     </div>
 
-                    {/* Verified Record Status */}
-                    {item.link ? (
-  <a
-    href={item.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-[11px] font-semibold text-slate-500 hover:text-[#ff5722] flex items-center gap-1 transition-colors"
-  >
-    <span>Verified Record</span>
-    <ExternalLink size={12} />
-  </a>
-) : (
-  <span className="text-[11px] font-semibold text-slate-600 flex items-center gap-1">
-    Recorded
-  </span>
-)}
+                   {/* Verified Record Link */}
+<div className="pt-3 border-t border-white/5 flex justify-end">
+  {item.link ? (
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-[11px] font-semibold text-slate-400 hover:text-[#ff5722] flex items-center gap-1 transition-colors"
+    >
+      <span>Verified Record</span>
+      <ExternalLink size={12} />
+    </a>
+  ) : (
+    <span className="text-[11px] font-semibold text-slate-600">
+      Internal Record
+    </span>
+  )}
+</div>
                 </motion.div>
               );
             })}
