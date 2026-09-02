@@ -47,7 +47,7 @@ const achievementsData = [
     description:
       'Participated in the student track, presenting innovative concepts to tackle complex operational and technological challenges.',
     tags: ['Innovation', 'Critical Thinking', 'Student Track'],
-    link: 'https://drive.google.com/file/d/1EehB03M0E6q9Pjr3zX-zr4UeNACK0YBo/view?usp=drive_link',
+    link: 'https://drive.google.com/file/d/1EehB03M0E6q9Pjr3zX-zr4UeNACK0YBo/view?usp=sharing',
   },
 
   // Verified Certifications
@@ -199,12 +199,21 @@ export default function Achievements() {
                     </div>
 
                     {/* Verified Record Status */}
-                    <div className="pt-3 border-t border-white/5 flex justify-end">
-                      <span className="text-[11px] font-semibold text-slate-500 group-hover:text-[#ff5722] flex items-center gap-1 transition-colors">
-                        Verified Record <ExternalLink size={12} />
-                      </span>
-                    </div>
-                  </div>
+                    {item.link ? (
+  <a
+    href={item.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-[11px] font-semibold text-slate-500 hover:text-[#ff5722] flex items-center gap-1 transition-colors"
+  >
+    <span>Verified Record</span>
+    <ExternalLink size={12} />
+  </a>
+) : (
+  <span className="text-[11px] font-semibold text-slate-600 flex items-center gap-1">
+    Recorded
+  </span>
+)}
                 </motion.div>
               );
             })}
