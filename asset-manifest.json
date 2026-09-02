@@ -1,13 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.794eb5a6.css",
-    "main.js": "/static/js/main.100307d1.js",
-    "index.html": "/index.html",
-    "main.794eb5a6.css.map": "/static/css/main.794eb5a6.css.map",
-    "main.100307d1.js.map": "/static/js/main.100307d1.js.map"
+    "main.css": "/portfolio/static/css/main.3a776785.css",
+    "main.js": "/portfolio/static/js/main.975e8e26.js",
+    "static/media/flux_link.png": "/portfolio/static/media/flux_link.3550dd35124689826f90.png",
+    "static/media/smart_garden.png": "/portfolio/static/media/smart_garden.33e1059e7a2ff61ae6f9.png",
+    "static/media/novafix.png": "/portfolio/static/media/novafix.b2a1ddf61bae95b2c4f8.png",
+    "static/media/agribot.png": "/portfolio/static/media/agribot.e7abc861aa891c333e87.png",
+    "index.html": "/portfolio/index.html",
+    "main.3a776785.css.map": "/portfolio/static/css/main.3a776785.css.map",
+    "main.975e8e26.js.map": "/portfolio/static/js/main.975e8e26.js.map"
   },
   "entrypoints": [
-    "static/css/main.794eb5a6.css",
-    "static/js/main.100307d1.js"
+    "static/css/main.3a776785.css",
+    "static/js/main.975e8e26.js"
   ]
 }
