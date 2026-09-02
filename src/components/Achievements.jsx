@@ -6,6 +6,17 @@ import { ScrollHeading } from './ui/ScrollReveal';
 const achievementsData = [
   // Competitions & Hackathons
   {
+    id: 0,
+    title: 'Winner - Google Winter of Code 2024',
+    issuer: 'GWOC / Open Source',
+    year: '2024',
+    type: 'Competitions',
+    description:
+      'Won Google Winter of Code 2024 for architecting Strinja.Shop—a full-stack custom string art e-commerce platform built with React, Node, Express, and MongoDB.',
+    tags: ['Winner', 'Full-Stack', 'Open Source'],
+    link: 'https://github.com/Puneetas015/strinja.shop',
+  },
+  {
     id: 1,
     title: 'EY Techathon 6.0',
     issuer: 'Ernst & Young (EY)',
@@ -34,7 +45,7 @@ const achievementsData = [
     year: '2025',
     type: 'Competitions',
     description:
-      'Competed in India’s premier campus business and tech quiz, testing industry intelligence and analytical speed.',
+      "Competed in India's premier campus business and tech quiz, testing industry intelligence and analytical speed.",
     tags: ['Business Tech', 'Analytical Speed', 'SVNIT'],
     link: 'https://drive.google.com/file/d/15FHxpak5HN_deZqSbLSCD4fRPckUJOYU/view?usp=sharing',
   },
@@ -91,14 +102,12 @@ export default function Achievements() {
 
   return (
     <section id="achievements" className="relative py-28 px-6" style={{ background: '#090a0f' }}>
-      {/* Background Subtle Warm Accent */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full opacity-5 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #ff5722, transparent 70%)', filter: 'blur(100px)' }}
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* Animated Scroll Header */}
         <ScrollHeading
           kicker="Milestones"
           title="Achievements"
@@ -198,24 +207,25 @@ export default function Achievements() {
                       ))}
                     </div>
 
-                   {/* Verified Record Link */}
-<div className="pt-3 border-t border-white/5 flex justify-end">
-  {item.link ? (
-    <a
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-[11px] font-semibold text-slate-400 hover:text-[#ff5722] flex items-center gap-1 transition-colors"
-    >
-      <span>Verified Record</span>
-      <ExternalLink size={12} />
-    </a>
-  ) : (
-    <span className="text-[11px] font-semibold text-slate-600">
-      Internal Record
-    </span>
-  )}
-</div>
+                    {/* Verified Record Status Link */}
+                    <div className="pt-3 border-t border-white/5 flex justify-end">
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-semibold text-slate-400 hover:text-[#ff5722] flex items-center gap-1 transition-colors"
+                        >
+                          <span>Verified Record</span>
+                          <ExternalLink size={12} />
+                        </a>
+                      ) : (
+                        <span className="text-[11px] font-semibold text-slate-600">
+                          Recorded
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
